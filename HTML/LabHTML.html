@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8"/>
+    <title>Лабораторная работа</title>
+    <style type="text/css">
+        section {
+            width: 60%;
+        }
+
+        article {
+            width: 30%;
+            margin-left: 65%;
+            margin-top: -30%;
+        }
+
+        header {
+            margin-left: 30%;
+        }
+
+        header p {
+            font-family: sans-serif;
+            font-size: 15px;
+            color: blue;
+        }
+
+        img {
+            padding-left: 30%;
+        }
+
+        div.forms {
+            margin-left: 10%;
+        }
+
+        div.forms div {
+            width: 20%;
+            margin-right: 5%;
+
+            white-space: normal;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        table {
+            border: 3px groove #000;
+        }
+
+        td {
+            background: aquamarine;
+            border: 1px solid #000;
+        }
+
+        th {
+            background: aqua;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <p>Мальков Александр Ахмадович, P3233, вариант 33012</p>
+</header>
+<section>
+    <div class="img">
+        <img src="../img/areas.png" alt="img">
+    </div>
+    <div class="forms">
+        <form method="get" id="request" action="../PHP/inputScript.php">
+            <div id="thos">
+                <fieldset>
+                   <legend>X</legend>
+                    <ul type="none">
+                        <li><label><input type="checkbox" name="X[]" value="-5">-5</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="-4">-4</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="-3">-3</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="-2">-2</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="-1">-1</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="0">0</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="1">1</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="2">2</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="3">3</label></li>
+                    </ul>
+                </fieldset>
+            </div>
+            <div class="Y">
+                <fieldset>
+                    <legend>Y (-5\+5)</legend>
+
+                    <input type="text" maxlength="10" name="Y" required>
+                </fieldset>
+
+                <button class="main-offer__btn" data-submit>
+                    Проверить
+                </button>
+                <button class="main-offer__btn reset__btn" data-reset>
+                    Очистить
+                </button>
+            </div>
+
+            <div id="this" class="R">
+                <fieldset>
+                    <legend>R</legend>
+                    <ul type="none">
+                        <li><label><input type="checkbox" name="R[]" value="1">1</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="1,5">1.5</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="2">2</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="2,5">2.5</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="3">3</label></li>
+                    </ul>
+                </fieldset>
+            </div>
+
+        </form>
+    </div>
+</section>
+<article>
+    <table id="outputTable">
+        <tbody id="tbody">
+        <tr>
+            <th>X</th>
+            <th>Y</th>
+            <th>R</th>
+            <th>Результат</th>
+            <th>Выполнение</th>
+            <th>Время</th>
+        </tr>
+        </tbody>
+    </table>
+</article>
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script src="../JS/Validator.js" type="text/javascript"></script>
+<script>
+    $('#thos input:checkbox').click(function(){
+        if ($(this).is(':checked')) {
+            $('#thos input:checkbox').not(this).prop('checked', false);
+        }
+    });
+    $('#this input:checkbox').click(function(){
+        if ($(this).is(':checked')) {
+            $('#this input:checkbox').not(this).prop('checked', false);
+        }
+    });
+</script>
+</body>
+</html>
