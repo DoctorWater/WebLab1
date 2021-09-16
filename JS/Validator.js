@@ -16,7 +16,7 @@ $(document).ready(function () {
         e.preventDefault();
         console.log("here")
         $.ajax({
-            url: "../PHP/reset.php",
+            url: "/home/s311361/public_html/PHP/reset.php",
             async: true,
             type: "GET",
             data: {},
@@ -63,7 +63,7 @@ $(document).ready(function() {
         if(!isValuesValid())
             return;
             $.ajax({
-                url: "../PHP/inputScript.php",
+                url: "/home/s311361/public_html/PHP/inputScript.php",
                 async: true,
                 type: "GET",
                 data: {
@@ -103,7 +103,7 @@ $(document).ready(function() {
 $(document).ready(function () {
     console.log("Я в ресторе");
     $.ajax({
-        url: "../PHP/restore.php",
+        url: "/home/s311361/public_html/PHP/restore.php",
         async: true,
         type: "GET",
         success: function (response){
