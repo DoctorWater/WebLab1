@@ -1,12 +1,13 @@
-let r = document.getElementsByName("R");
-let x = document.getElementsByName("X");
+let rIn = document.getElementsByName("R[]");
+let xIn = document.getElementsByName("X[]");
 let y = document.getElementById("Y");
 let table = document.getElementById("tbody");
 let yString=JSON.stringify(y);
+let x;
+let r;
+console.log(xIn.length);
+console.log(xIn);
 
-for (var i = 0; i < x.length; ++i) {
-    var item = x[i];  // Вызов myNodeList.item(i) необязателен в JavaScript
-}
 
 function fieldsEmpty() {
     let isEmpty = false;
@@ -66,10 +67,21 @@ $(document).ready(function () {
 console.log("Ya tut");
 $(document).ready(function() {
     $('[data-submit]').on('click', function(e) {
-        e.preventDefault();
+        for (let i = 0; i < xIn.length; i++) {
+            if (xIn[i].checked === true) {
+                x = xIn[i].value;
+            }
+        }
+        console.log(x.value);
+        for (let i = 0; i < rIn.length; i++) {
+            if (rIn[i].checked === true)
+                r=rIn[i].value;
+        }
         //let isOkFields = !fieldsEmpty();
        // if (!isOkFields) return;
         console.log("Я в сабмите");
+        console.log("x="+ x);
+        console.log("r="+ r);
        // let isOkValues = isValuesValid();
         //if (isOkFields && isOkValues) {
             $.ajax({
@@ -77,9 +89,9 @@ $(document).ready(function() {
                 async: true,
                 type: "GET",
                 data: {
-                    "x": x.value,
+                    "x": x,
                     "y": y.value,
-                    "r": r.value
+                    "r": r
                 },
                 cache: false,
                 success: function(response) {
