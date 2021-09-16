@@ -1,25 +1,16 @@
 let r = document.getElementsByName("R");
-let x = document.getElementsByName("X")
-let y = document.getElementById("y");
+let x = document.getElementsByName("X");
+let y = document.getElementById("Y");
 let table = document.getElementById("tbody");
+let yString=JSON.stringify(y);
+
+for (var i = 0; i < x.length; ++i) {
+    var item = x[i];  // Вызов myNodeList.item(i) необязателен в JavaScript
+}
 
 function fieldsEmpty() {
     let isEmpty = false;
-
-    if (!r.value) {
-        r.style.borderBottom = "1px solid red";
-        $('#messageR').text("Это поле обязательно для заполнения");
-        isEmpty = true;
-    } else $('#messageR').text("");
-
-    if (!x.value) {
-        x.style.borderBottom = "1px solid red";
-        $('#messageX').text("Это поле обязательно для заполнения");
-        isEmpty = true;
-    } else $('#messageX').text("");
-
-    if (!y.value) {
-        y.style.borderBottom = "1px solid red";
+    if (!y.valueOf()) {
         $('#messageY').text("Это поле обязательно для заполнения");
         isEmpty = true;
     } else $('#messageY').text("");
@@ -28,25 +19,18 @@ function fieldsEmpty() {
 
 function isValuesValid() {
     let isOK = true
-    if (r.value >= 4 || r.value <= 1 || isNaN(r.value)){
-        r.style.borderBottom = "1px solid red";
+    if (r.valueOf() >= 4 || r.valueOf() <= 1 || isNaN(r.valueOf())){
         $('#messageR').text("Некорректный ввод");
         isOK = false;
-    } else {
-        r.style.borderBottom = "1px solid #ACACAC";
     }
 
-    if (!isNaN(parseFloat(x.value)) && ![-5, -4, -3, -2, -1, 0, 1, 2, 3].includes(parseFloat(x.value))) {
-        x.style.borderBottom = "1px solid red";
+    if (!isNaN(parseFloat(x.valueOf())) && ![-5, -4, -3, -2, -1, 0, 1, 2, 3].includes(parseFloat(x.valueOf()))) {
         $('#messageX').text("Некорректный ввод");
         isOK = false;
     }
-    if (y.value >= 3 || y.value <= -3 || isNaN(y.value)){
-        y.style.borderBottom = "1px solid red";
+    if (y.valueOf() >= 3 || y.valueOf() <= -3 || isNaN(y.valueOf())){
         $('#messageY').text("Некорректный ввод");
         isOK = false;
-    } else {
-        y.style.borderBottom = "1px solid #ACACAC";
     }
     return isOK;
 }
@@ -79,14 +63,15 @@ $(document).ready(function () {
         });
     })
 })
-
+console.log("Ya tut");
 $(document).ready(function() {
     $('[data-submit]').on('click', function(e) {
         e.preventDefault();
-        let isOkFields = !fieldsEmpty();
-        if (!isOkFields) return;
-        let isOkValues = isValuesValid();
-        if (isOkFields && isOkValues) {
+        //let isOkFields = !fieldsEmpty();
+       // if (!isOkFields) return;
+        console.log("Я в сабмите");
+       // let isOkValues = isValuesValid();
+        //if (isOkFields && isOkValues) {
             $.ajax({
                 url: "../PHP/inputScript.php",
                 async: true,
@@ -121,11 +106,12 @@ $(document).ready(function() {
                     alert(msg);
                 }
             });
-        }
+
     })
 });
 
 $(document).ready(function () {
+    console.log("Я в ресторе");
     $.ajax({
         url: "../PHP/restore.php",
         async: true,

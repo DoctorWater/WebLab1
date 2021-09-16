@@ -1,9 +1,9 @@
 <?php
 session_start();
 $time_on = microtime(true);
-$r = floatval(htmlspecialchars($_GET["R"]));
-$x = floatval(htmlspecialchars($_GET["X"]));
-$y = floatval(htmlspecialchars($_GET["Y"]));
+$r = floatval(htmlspecialchars($_GET["r"]));
+$x = floatval(htmlspecialchars($_GET["x"]));
+$y = floatval(htmlspecialchars($_GET["y"]));
 date_default_timezone_set("Europe/Moscow");
 $_SESSION["time"]=date("H:i:s");
 function Geron($Ax, $Ay, $Bx, $By, $Cx, $Cy): float|int

@@ -65,7 +65,7 @@
         <img src="../img/areas.png" alt="img">
     </div>
     <div class="forms">
-        <form method="get" id="request" action="../PHP/inputScript.php">
+        <form method="get" id="request">
             <div id="thos">
                 <fieldset>
                    <legend>X</legend>
@@ -75,7 +75,7 @@
                         <li><label><input type="checkbox" name="X[]" value="-3">-3</label></li>
                         <li><label><input type="checkbox" name="X[]" value="-2">-2</label></li>
                         <li><label><input type="checkbox" name="X[]" value="-1">-1</label></li>
-                        <li><label><input type="checkbox" name="X[]" value="0">0</label></li>
+                        <li><label><input type="checkbox" name="X[]" value="0" checked>0</label></li>
                         <li><label><input type="checkbox" name="X[]" value="1">1</label></li>
                         <li><label><input type="checkbox" name="X[]" value="2">2</label></li>
                         <li><label><input type="checkbox" name="X[]" value="3">3</label></li>
@@ -85,8 +85,7 @@
             <div class="Y">
                 <fieldset>
                     <legend>Y (-5\+5)</legend>
-
-                    <input type="text" maxlength="10" name="Y" required>
+                   <input class="main-offer__input" maxlength="15" type="text" name="Y" id="Y" placeholder="Введите Y" size="13" required>
                 </fieldset>
 
                 <button class="main-offer__btn" data-submit>
@@ -101,10 +100,10 @@
                 <fieldset>
                     <legend>R</legend>
                     <ul type="none">
-                        <li><label><input type="checkbox" name="R[]" value="1">1</label></li>
-                        <li><label><input type="checkbox" name="R[]" value="1,5">1.5</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="1" checked>1</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="1.5">1.5</label></li>
                         <li><label><input type="checkbox" name="R[]" value="2">2</label></li>
-                        <li><label><input type="checkbox" name="R[]" value="2,5">2.5</label></li>
+                        <li><label><input type="checkbox" name="R[]" value="2.5">2.5</label></li>
                         <li><label><input type="checkbox" name="R[]" value="3">3</label></li>
                     </ul>
                 </fieldset>
