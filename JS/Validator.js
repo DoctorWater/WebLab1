@@ -2,39 +2,14 @@ let rIn = document.getElementsByName("R[]");
 let xIn = document.getElementsByName("X[]");
 let y = document.getElementById("Y");
 let table = document.getElementById("tbody");
-let yString=JSON.stringify(y);
-let x;
-let r;
+let x=-99;
+let r=-99;
 console.log(xIn.length);
 console.log(xIn);
 
 
-function fieldsEmpty() {
-    let isEmpty = false;
-    if (!y.valueOf()) {
-        $('#messageY').text("Это поле обязательно для заполнения");
-        isEmpty = true;
-    } else $('#messageY').text("");
-    return isEmpty;
-}
 
-function isValuesValid() {
-    let isOK = true
-    if (r.valueOf() >= 4 || r.valueOf() <= 1 || isNaN(r.valueOf())){
-        $('#messageR').text("Некорректный ввод");
-        isOK = false;
-    }
 
-    if (!isNaN(parseFloat(x.valueOf())) && ![-5, -4, -3, -2, -1, 0, 1, 2, 3].includes(parseFloat(x.valueOf()))) {
-        $('#messageX').text("Некорректный ввод");
-        isOK = false;
-    }
-    if (y.valueOf() >= 3 || y.valueOf() <= -3 || isNaN(y.valueOf())){
-        $('#messageY').text("Некорректный ввод");
-        isOK = false;
-    }
-    return isOK;
-}
 
 $(document).ready(function () {
     $('[data-reset]').on('click', function (e) {
@@ -64,7 +39,6 @@ $(document).ready(function () {
         });
     })
 })
-console.log("Ya tut");
 $(document).ready(function() {
     $('[data-submit]').on('click', function(e) {
         for (let i = 0; i < xIn.length; i++) {
@@ -72,18 +46,22 @@ $(document).ready(function() {
                 x = xIn[i].value;
             }
         }
-        console.log(x.value);
-        for (let i = 0; i < rIn.length; i++) {
-            if (rIn[i].checked === true)
-                r=rIn[i].value;
+        if (x==-99){
+            alert("Некорректный ввод");
+            return;
         }
-        //let isOkFields = !fieldsEmpty();
-       // if (!isOkFields) return;
-        console.log("Я в сабмите");
-        console.log("x="+ x);
-        console.log("r="+ r);
-       // let isOkValues = isValuesValid();
-        //if (isOkFields && isOkValues) {
+        for (let i = 0; i < rIn.length; i++) {
+            if (rIn[i].checked === true) {
+                r = rIn[i].value;
+            }
+        }
+        if (r==-99)
+        {
+            alert("Некорректный ввод");
+            return;
+        }
+        if(!isValuesValid())
+            return;
             $.ajax({
                 url: "../PHP/inputScript.php",
                 async: true,
@@ -134,3 +112,14 @@ $(document).ready(function () {
         }
     })
 })
+
+function isValuesValid() {
+    let isOK = true;
+    if (y.value >= 5 || y.value <= -5 || isNaN(y.value)){
+        alert("Некорректный ввод");
+        isOK = false;
+    } else {
+        y.style.borderBottom = "1px solid #ACACAC";
+    }
+    return isOK;
+}
