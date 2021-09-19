@@ -16,7 +16,7 @@ $(document).ready(function () {
         e.preventDefault();
         console.log("here")
         $.ajax({
-            url: "/home/s311361/public_html/PHP/reset.php",
+            url: "reset.php",
             async: true,
             type: "GET",
             data: {},
@@ -63,7 +63,7 @@ $(document).ready(function() {
         if(!isValuesValid())
             return;
             $.ajax({
-                url: "/home/s311361/public_html/PHP/inputScript.php",
+                url: "inputScript.php",
                 async: true,
                 type: "GET",
                 data: {
@@ -103,7 +103,7 @@ $(document).ready(function() {
 $(document).ready(function () {
     console.log("Я в ресторе");
     $.ajax({
-        url: "/home/s311361/public_html/PHP/restore.php",
+        url: "restore.php",
         async: true,
         type: "GET",
         success: function (response){
@@ -115,7 +115,7 @@ $(document).ready(function () {
 
 function isValuesValid() {
     let isOK = true;
-    if (y.value >= 5 || y.value <= -5 || isNaN(y.value)){
+    if (y.value >= 5 || y.value <= -5 || isNaN(y.value)||y.value==null){
         alert("Некорректный ввод");
         isOK = false;
     } else {
