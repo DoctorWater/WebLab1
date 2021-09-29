@@ -8,9 +8,6 @@ console.log(xIn.length);
 console.log(xIn);
 
 
-
-
-
 $(document).ready(function () {
     $('[data-reset]').on('click', function (e) {
         e.preventDefault();
